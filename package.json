@@ -1,6 +1,6 @@
 {
   "name": "react-midway-highlighter",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Given a list of react elements, highlight the one which contains the vertical midline of the window.",
   "main": "midway-highlighter.js",
   "scripts": {
