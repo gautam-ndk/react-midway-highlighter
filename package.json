@@ -4,7 +4,9 @@
   "description": "Given a list of react elements, highlight the one which contains the vertical midline of the window.",
   "main": "midway-highlighter.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel midway-highlighter.jsx > midway-highlighter.js",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -16,7 +18,8 @@
     "midline",
     "middle",
     "of",
-    "window"
+    "window",
+    "react-component"
   ],
   "author": "Gautam Chandra <gautam4you@gmail.com> (http://www.theox.in)",
   "license": "MIT",
@@ -24,9 +27,12 @@
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
     "jquery": "^2.2.0"
-  },  
+  },
   "bugs": {
     "url": "https://github.com/dhunnapotha/react-midway-highlighter/issues"
   },
-  "homepage": "https://github.com/dhunnapotha/react-midway-highlighter"
+  "homepage": "https://github.com/dhunnapotha/react-midway-highlighter",
+  "devDependencies": {
+    "babel-preset-react": "^6.5.0"
+  }
 }
