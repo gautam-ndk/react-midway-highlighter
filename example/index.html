@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <script type="text/javascript" src="/midway-highlighter_package.js"></script>
+</head>
+<body>
+<div id="container"></div>
+
+<script type="text/javascript">
+
+
+"use strict";
+
+
+var About = React.createClass({
+  displayName: "About",
+
+  propTypes: {},
+
+  render: function render() {
+    return React.createElement(
+      "div",
+      null,
+      React.createElement("div", { className: "midline_ref" }),
+      React.createElement(
+        MidwayHighlighter,
+        null,
+        React.createElement(
+          "div",
+          { className: "mh_test_block" },
+          React.createElement(
+            "div",
+            { className: "mh_test_block1" },
+            "1"
+          )
+        ),
+        React.createElement(
+          "div",
+          { className: "mh_test_block" },
+          "2"
+        ),
+        React.createElement(
+          "div",
+          { className: "mh_test_block" },
+          "3"
+        ),
+        React.createElement(
+          "div",
+          { className: "mh_test_block" },
+          "4"
+        ),
+        React.createElement(
+          "div",
+          { className: "mh_test_block" },
+          "5"
+        ),
+        React.createElement(
+          "div",
+          { className: "mh_test_block" },
+          "6"
+        ),
+        React.createElement(
+          "div",
+          { className: "mh_test_block" },
+          "7"
+        ),
+        React.createElement(
+          "div",
+          { className: "mh_test_block" },
+          "8"
+        ),
+        React.createElement(
+          "div",
+          { className: "mh_test_block" },
+          "9"
+        ),
+        React.createElement(
+          "div",
+          { className: "mh_test_block" },
+          "10"
+        ),
+        React.createElement(
+          "div",
+          { className: "mh_test_block" },
+          "11"
+        ),
+        React.createElement(
+          "div",
+          { className: "mh_test_block" },
+          "12"
+        )
+      )
+    );
+  }
+
+});
+
+window.About = About;  
+
+
+var data = {};
+ReactDOM.render(React.createElement(About, data), document.getElementById('container'));
+
+</script>
+
+
+</body>
+</html>

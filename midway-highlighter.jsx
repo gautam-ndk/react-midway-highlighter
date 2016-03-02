@@ -141,10 +141,10 @@ var MidwayHighlighter = React.createClass({
   },
 
   render: function () {
-    var wrap = this._wrapInsideDivs();
+    
     return (
       <div className="midway_highlighter">
-        {wrap}
+        {this._wrapInsideDivs()}
       </div>
     );
   }
