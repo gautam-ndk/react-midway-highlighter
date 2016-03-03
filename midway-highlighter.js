@@ -1,7 +1,3 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var jQuery = require("jquery");
-
 var MidwayHighlighter = React.createClass({
   displayName: 'MidwayHighlighter',
 
@@ -54,37 +50,52 @@ var MidwayHighlighter = React.createClass({
     var margin_top = parseInt(jquery_handle.children().first().css('margin-top').replace('px', ''));
     var actual_top = top - margin_top;
 
-    console.log({ top: actual_top, bottom: bottom });
     return { top: actual_top, bottom: bottom };
   },
 
-  /* Once the component is mounted, we should register the positions.
-     These registered values are used to find out which element to be highlighted
-  */
 
+  // Find the vertical midline of the window.
+  _findMidwayPoint: function () {
+    return (window.innerHeight / 2 + jQuery(window).scrollTop());
+  },
+
+  // Find if the given dimensions contain the midway point passed!
+  _ifCordinatesFallBetween: function (dim, midway) {
+    return (dim.top <= midway && dim.bottom >= midway);
+  },
+
+  /* Once the component is mounted, we should register the positions.
+     These registered values are used to find out which element to be highlighted.
+     On the component mount, we should find out what is the active index.
+  */
   _registerPositions: function () {
+    var active = this.state.active;
     var children_count = this.state.children_count;
     var dims = [];
-    console.log(this.refs);
+    var midway = this._findMidwayPoint();
     for (i = 0; i < children_count; i += 1) {
-      console.log(ref);
       var ref = this.refs[this._getRefName(i)];
       dims[i] = this._fetchContainerPosition(ref);
+
+
+      // on load, find the active index.
+      if(this._ifCordinatesFallBetween(dims[i], midway))
+        active = i;
     }
 
-    this.setState({ dims: dims });
+    this.setState({ dims: dims, active: active });
   },
 
   // Finds the index, which is containing the midline
   _findMidwayIndex: function () {
-    var midway = window.innerHeight / 2 + jQuery(window).scrollTop();
+    var midway = this._findMidwayPoint();
     var active = -1;
     var dims = this.state.dims;
 
     // todo: move to binary search in the future
     for (i in dims) {
       var d = dims[i];
-      if (d.top <= midway && d.bottom >= midway) {
+      if(this._ifCordinatesFallBetween(d, midway)) {
         active = i;
         break;
       }
@@ -143,5 +154,6 @@ var MidwayHighlighter = React.createClass({
 
 });
 
-module.exports = MidwayHighlighter;
+// integrate browserify later
+if (typeof module != 'undefined') module.exports = MidwayHighlighter;
 

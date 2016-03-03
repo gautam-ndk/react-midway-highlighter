@@ -24,18 +24,12 @@
   "author": "Gautam Chandra <gautam4you@gmail.com> (http://www.theox.in)",
   "license": "MIT",
   "peerDependencies": {
-    "react": "^0.14.0",
-    "react-dom": "^0.14.0",
-    "jquery": "^2.2.0"
   },
   "bugs": {
     "url": "https://github.com/dhunnapotha/react-midway-highlighter/issues"
   },
   "homepage": "https://github.com/dhunnapotha/react-midway-highlighter",
   "devDependencies": {
-    "babel-preset-react": "^6.5.0",
-    "react": "^0.14.0",
-    "react-dom": "^0.14.0",
-    "jquery": "^2.2.0"    
+    "babel-preset-react": "^6.5.0"  
   }
 }

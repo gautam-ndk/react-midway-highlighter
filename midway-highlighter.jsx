@@ -1,7 +1,3 @@
-var React     = require('react');
-var ReactDOM  = require('react-dom');
-var jQuery    = require("jquery");
-
 var MidwayHighlighter = React.createClass({
   propTypes: {
     midway_element_styling: React.PropTypes.object,
@@ -57,7 +53,6 @@ var MidwayHighlighter = React.createClass({
     var margin_top    = parseInt(jquery_handle.children().first().css('margin-top').replace('px',''));
     var actual_top    = top - margin_top;
 
-    console.log({top: actual_top, bottom: bottom});
     return ({top: actual_top, bottom: bottom});
  },
 
@@ -69,9 +64,7 @@ var MidwayHighlighter = React.createClass({
   _registerPositions: function () {
     var children_count = this.state.children_count;
     var dims = [];
-    console.log(this.refs);
     for(i=0; i < children_count; i+=1){
-      console.log(ref);
       var ref = this.refs[this._getRefName(i)];
       dims[i] = this._fetchContainerPosition(ref);
     }
@@ -95,6 +88,8 @@ var MidwayHighlighter = React.createClass({
       }
     }
 
+    console.log('active index is +', active);
+
     return active; 
   },
 
@@ -117,6 +112,7 @@ var MidwayHighlighter = React.createClass({
   componentDidMount: function () {
     this._registerPositions();
     this._registerScrollEventListener();
+    this.setState({active: this._findMidwayIndex()});
   },
 
 
@@ -151,5 +147,6 @@ var MidwayHighlighter = React.createClass({
 
 });
 
-
-module.exports = MidwayHighlighter;
+// integrate browserify later
+if(typeof module != 'undefined')
+  module.exports = MidwayHighlighter;
