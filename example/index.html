@@ -71,20 +71,21 @@
 
 
     var About = React.createClass({
+
+      logActiveIndex: function (index) {
+        console.log('active index is' + index);
+        return;
+      },
+
+
       render: function () {
 
         return(
 
           <div>
 
-            <MidwayHighlighter>
-              <div className="mh_test_block" >
-
-                <div className="mh_test_block1" >
-                  1
-                </div>
-
-              </div>
+            <MidwayHighlighter onActive={this.logActiveIndex}>
+              <div className="mh_test_block" >1</div>
               <div className="mh_test_block" >2</div>
               <div className="mh_test_block" >3</div>
               <div className="mh_test_block" >4</div>
@@ -96,10 +97,6 @@
               <div className="mh_test_block" >10</div>
               <div className="mh_test_block" >11</div>
               <div className="mh_test_block" >12</div>
-
-
-
-
             </MidwayHighlighter>      
           </div>
         );

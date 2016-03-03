@@ -2,8 +2,14 @@ var MidwayHighlighter = React.createClass({
   displayName: 'MidwayHighlighter',
 
   propTypes: {
+    onActive: React.PropTypes.func
   },
 
+  getDefaultProps: function () {
+    return {
+      onActive: null,
+    };
+  },
 
   /* State
     dims            = array of top and bottom indices of the containers
@@ -36,10 +42,8 @@ var MidwayHighlighter = React.createClass({
     var jquery_handle = jQuery(ReactDOM.findDOMNode(react_element));
     var top = jquery_handle.offset().top;
     var bottom = top + jquery_handle.outerHeight(true);
-    var margin_top = parseInt(jquery_handle.children().first().css('margin-top').replace('px', ''));
-    var actual_top = top - margin_top;
 
-    return { top: actual_top, bottom: bottom };
+    return { top: top, bottom: bottom };
   },
 
 
@@ -53,6 +57,15 @@ var MidwayHighlighter = React.createClass({
     return (dim.top <= midway && dim.bottom >= midway);
   },
 
+  // Notify the caller if the active_index is not the same as the currently set index.
+  // Call this before setting the index
+  _notifyCaller: function (active_index) {
+    if((this.state.active != active_index) && this.props.onActive)
+      this.props.onActive(active_index);
+  },
+
+
+
   /* Once the component is mounted, we should register the positions.
      These registered values are used to find out which element to be highlighted.
      On the component mount, we should find out what is the active index.
@@ -62,6 +75,7 @@ var MidwayHighlighter = React.createClass({
     var children_count = this.state.children_count;
     var dims = [];
     var midway = this._findMidwayPoint();
+
     for (i = 0; i < children_count; i += 1) {
       var ref = this.refs[this._getRefName(i)];
       dims[i] = this._fetchContainerPosition(ref);
@@ -72,7 +86,9 @@ var MidwayHighlighter = React.createClass({
         active = i;
     }
 
+    this._notifyCaller(active);
     this.setState({ dims: dims, active: active });
+
   },
 
   // Finds the index, which is containing the midline
@@ -103,6 +119,7 @@ var MidwayHighlighter = React.createClass({
   handleScrollEvent: function () {
     var active_index = this._findMidwayIndex();
     if (this.state.active != active_index) {
+      this._notifyCaller(active_index);
       this.setState({ active: active_index });
     }
   },
@@ -133,7 +150,6 @@ var MidwayHighlighter = React.createClass({
     var wrap = children.map(function (element, index) {
       var ref_name = this._getRefName(index);
       var class_name = (index != active_index) ? "mh_container" : "mh_container active";
-      console.log(class_name);
       return React.createElement(
         'div',
         { className: class_name, key: index, ref: ref_name },
