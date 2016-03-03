@@ -104,6 +104,12 @@ var MidwayHighlighter = React.createClass({
     return active;
   },
 
+
+  // Register new positions now!
+  handleResizeEvent: function () {
+    this._registerPositions();
+  },
+
   // If the active element is updated, update this state
   handleScrollEvent: function () {
     var active_index = this._findMidwayIndex();
@@ -117,10 +123,15 @@ var MidwayHighlighter = React.createClass({
     window.addEventListener('scroll', this.handleScrollEvent);
   },
 
+  _registerResizeEventListener: function () {
+    window.addEventListener('resize', this.handleResizeEvent);
+  },
+
   // Register positions & register scrollevent listeneer
   componentDidMount: function () {
     this._registerPositions();
     this._registerScrollEventListener();
+    this._registerResizeEventListener();
   },
 
   /* Wrap the passed children by divs. Change the state of the divs.
