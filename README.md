@@ -7,9 +7,14 @@ Once you figure out which element falls on the midway, we can highlight it with 
 Influenced by typeform, I wanted to have a similar functionality in my [pluckdp](http://pluckdp.theox.in) app. So, built it. OSSing it :-)
 
 ### Example
-Clone the repo and open examples/index.html in your browser. 
+Clone the repo and open example/index.html in your browser. 
 
-It fetches react,react-dom and jquery from script urls and uses jsx in-browser transformer. So, no need to worry about browserifying / reactifying / npming bullshit just to test.
+It fetches react,react-dom and jquery from script urls and uses jsx in-browser transformer . So, no need to worry about browserifying / reactifying / npming bullshit just to test.
+
+Below is the snap of the example
+![Sample](/example/sample.png?raw=true "Sample Snap")
+
+
 
 ### More details
 #### How does it work?
