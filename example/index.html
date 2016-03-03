@@ -2,107 +2,101 @@
 <html>
 <head>
   <title></title>
-  <script type="text/javascript" src="/midway-highlighter_package.js"></script>
-</head>
-<body>
-<div id="container"></div>
 
-<script type="text/javascript">
+  <script type="text/javascript" src="https://fbcdn-dragon-a.akamaihd.net/hphotos-ak-xtp1/t39.3284-6/12624079_897774290317920_1379776191_n.js"></script>
+  <script type="text/javascript" src="https://fbcdn-dragon-a.akamaihd.net/hphotos-ak-xfp1/t39.3284-6/12624052_751451571621845_431133942_n.js"></script>
 
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
 
-"use strict";
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
 
+  <script type="text/javascript" src="./midway_highlighter_bundle.js"></script>
+  
 
-var About = React.createClass({
-  displayName: "About",
+  <style>
 
-  propTypes: {},
-
-  render: function render() {
-    return React.createElement(
-      "div",
-      null,
-      React.createElement("div", { className: "midline_ref" }),
-      React.createElement(
-        MidwayHighlighter,
-        null,
-        React.createElement(
-          "div",
-          { className: "mh_test_block" },
-          React.createElement(
-            "div",
-            { className: "mh_test_block1" },
-            "1"
-          )
-        ),
-        React.createElement(
-          "div",
-          { className: "mh_test_block" },
-          "2"
-        ),
-        React.createElement(
-          "div",
-          { className: "mh_test_block" },
-          "3"
-        ),
-        React.createElement(
-          "div",
-          { className: "mh_test_block" },
-          "4"
-        ),
-        React.createElement(
-          "div",
-          { className: "mh_test_block" },
-          "5"
-        ),
-        React.createElement(
-          "div",
-          { className: "mh_test_block" },
-          "6"
-        ),
-        React.createElement(
-          "div",
-          { className: "mh_test_block" },
-          "7"
-        ),
-        React.createElement(
-          "div",
-          { className: "mh_test_block" },
-          "8"
-        ),
-        React.createElement(
-          "div",
-          { className: "mh_test_block" },
-          "9"
-        ),
-        React.createElement(
-          "div",
-          { className: "mh_test_block" },
-          "10"
-        ),
-        React.createElement(
-          "div",
-          { className: "mh_test_block" },
-          "11"
-        ),
-        React.createElement(
-          "div",
-          { className: "mh_test_block" },
-          "12"
-        )
-      )
-    );
+  .mh_test_block {
+    width: 100%;
+    height: 100px; 
+    background-color: blue;
+    border: 1px solid black;
+    color: white;
+    padding-top: 50px;
+    // margin-top: 50px;
+    
   }
 
-});
+  .midline_ref {
+    width: 100%;
+    height: 1px;
+    background-color: red;
+    position: fixed;
+    top: 50%;
+  }
 
-window.About = About;  
+  </style>
 
 
-var data = {};
-ReactDOM.render(React.createElement(About, data), document.getElementById('container'));
 
-</script>
+
+
+</head>
+<body>
+  <div id="container">
+  </div>
+
+
+
+    <script type="text/babel">
+
+
+
+    var About = React.createClass({
+      render: function () {
+
+        return(
+
+          <div>
+            <div className="midline_ref" >
+            </div>
+
+            <MidwayHighlighter>
+              <div className="mh_test_block" >
+
+                <div className="mh_test_block1" >
+                  1
+                </div>
+
+              </div>
+              <div className="mh_test_block" >2</div>
+              <div className="mh_test_block" >3</div>
+              <div className="mh_test_block" >4</div>
+              <div className="mh_test_block" >5</div>
+              <div className="mh_test_block" >6</div>
+              <div className="mh_test_block" >7</div>
+              <div className="mh_test_block" >8</div>
+              <div className="mh_test_block" >9</div>
+              <div className="mh_test_block" >10</div>
+              <div className="mh_test_block" >11</div>
+              <div className="mh_test_block" >12</div>
+
+
+
+
+            </MidwayHighlighter>      
+          </div>
+        );
+      }
+    });
+
+    window.About = About; 
+
+    var data = {};
+    ReactDOM.render(React.createElement(About, data), document.getElementById('container'));
+
+  </script>
+
+
 
 
 </body>

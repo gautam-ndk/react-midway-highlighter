@@ -33,6 +33,9 @@
   },
   "homepage": "https://github.com/dhunnapotha/react-midway-highlighter",
   "devDependencies": {
-    "babel-preset-react": "^6.5.0"
+    "babel-preset-react": "^6.5.0",
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0",
+    "jquery": "^2.2.0"    
   }
 }
