@@ -1,12 +1,10 @@
 {
   "name": "react-midway-highlighter",
-  "version": "1.1.0",
+  "version": "1.3.0",
   "description": "Given a list of react elements, highlight the one which contains the vertical midline of the window.",
   "main": "midway-highlighter.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "babel midway-highlighter.jsx > midway-highlighter.js",
-    "prepublish": "npm run build"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
