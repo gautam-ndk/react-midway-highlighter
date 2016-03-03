@@ -16,17 +16,32 @@
 
   <style>
 
-  .mh_test_block {
-    width: 100%;
-    height: 100px; 
-    background-color: blue;
-    border: 1px solid black;
-    color: white;
-    padding-top: 50px;
-    // margin-top: 50px;
-    
+  body {
+    background-color: white;
   }
 
+.mh_container .mh_test_block{
+    background-color: grey;
+    border: 1px solid black;
+    border-radius: 30px;
+    color: white;
+    font-size: 30px;
+    height: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 50px;
+    text-align: center;
+    width: 60%;
+    opacity: 0.5;
+  }
+
+  .mh_container.active .mh_test_block{
+    background-color: #4fb0ae;
+    font-weight: bold;
+    opacity: 1;
+  }
+
+  /*Middle red line*/
   .midline_ref {
     width: 100%;
     height: 1px;

@@ -2,19 +2,8 @@ var MidwayHighlighter = React.createClass({
   displayName: 'MidwayHighlighter',
 
   propTypes: {
-    midway_element_styling: React.PropTypes.object,
-    other_elements_styling: React.PropTypes.object
   },
 
-  getDefaultProps: function () {
-    return {
-      midway_element_styling: {},
-      other_elements_styling: {
-        opacity: 0.5,
-        backgroundColor: 'black'
-      }
-    };
-  },
 
   /* State
     dims            = array of top and bottom indices of the containers
@@ -138,15 +127,16 @@ var MidwayHighlighter = React.createClass({
     Do not change the state of the children direclty.  */
   _wrapInsideDivs: function () {
 
-    var active_index = this.state.active;
-    var children = React.Children.toArray(this.props.children);
+    var active_index  = this.state.active;
+    var children      = React.Children.toArray(this.props.children);
 
     var wrap = children.map(function (element, index) {
       var ref_name = this._getRefName(index);
-      var styling = active_index == index ? this.props.midway_element_styling : this.props.other_elements_styling;
+      var class_name = (index != active_index) ? "mh_container" : "mh_container active";
+      console.log(class_name);
       return React.createElement(
         'div',
-        { className: 'mh_container', key: index, ref: ref_name, style: styling },
+        { className: class_name, key: index, ref: ref_name },
         element
       );
     }, this);
