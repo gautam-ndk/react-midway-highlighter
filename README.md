@@ -24,8 +24,25 @@ Below is the snap of the example
 * Works with resizing of window as well.
 
 #### Props?
-onActive: React.PropTypes.func
-This is an optional func prop and the function if passed will be called with a single parameter - index, which is the index of the midway element. 
+```
+ eventCallback: React.PropTypes.func
+```
+This is an optional function, the caller can pass, through which midway-highlighter can interact with the caller by sending events.
+
+Function prototype has to be
+```
+  eventCallbackHandler: function (event_type, data)
+```
+event_type can be one of ['active', 'dims']
+
+##### active
+* 'active' event is triggered when a new element falls in the midway.
+* data, in this case, is the active index id. Index starts from 0.
+
+##### dims
+* 'dims' event is triggered whenever the positions are calculated (onload / resize ..)
+* data, in this case, is an array of dimensions  {top: , bottom: }
+
 
 #### How to style midway element?
 
