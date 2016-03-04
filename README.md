@@ -47,8 +47,8 @@ event_type can be one of ['active', 'dims']
 #### How to style midway element?
 
 ##### Way 1
-* Register onActive callback
-* Style the midway element accordingly in the callback. 
+* Register eventCallback
+* Handle the 'active' event and style the midway element accordingly.
  
 ##### Way 2
 * The encapsulating containers have mh_container class. 
@@ -76,7 +76,4 @@ Feel free to send PR.
 
 ### Any other doubts? 
 Please create an issue.
-
-
-
 
