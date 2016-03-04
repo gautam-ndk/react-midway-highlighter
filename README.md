@@ -31,7 +31,7 @@ This is an optional function, the caller can pass, through which midway-highligh
 
 Function prototype has to be
 ```
-  eventCallbackHandler: function (event_type, data)
+  function (event_type, data)
 ```
 event_type can be one of ['active', 'dims']
 
