@@ -72,9 +72,19 @@
 
     var About = React.createClass({
 
-      logActiveIndex: function (index) {
-        console.log('active index is' + index);
-        return;
+      eventCallbackHandler: function (event_type, data) {
+
+        switch(event_type){
+          case 'active':
+            var index = data;
+            console.log('active index is' + index);
+            break;
+          case 'dims':
+            var dims = data;
+            // console.log(dims); 
+            // this console.log is a big output. Enable it only if you need
+            break;
+        }
       },
 
 
@@ -84,7 +94,7 @@
 
           <div>
 
-            <MidwayHighlighter onActive={this.logActiveIndex}>
+            <MidwayHighlighter eventCallback={this.eventCallbackHandler}>
               <div className="mh_test_block" >1</div>
               <div className="mh_test_block" >2</div>
               <div className="mh_test_block" >3</div>

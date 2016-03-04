@@ -2,12 +2,12 @@ var MidwayHighlighter = React.createClass({
   displayName: 'MidwayHighlighter',
 
   propTypes: {
-    onActive: React.PropTypes.func
+    eventCallback: React.PropTypes.func
   },
 
   getDefaultProps: function () {
     return {
-      onActive: null,
+      eventCallback: null,
     };
   },
 
@@ -58,10 +58,19 @@ var MidwayHighlighter = React.createClass({
   },
 
   // Notify the caller if the active_index is not the same as the currently set index.
-  // Call this before setting the index
-  _notifyCaller: function (active_index) {
-    if((this.state.active != active_index) && this.props.onActive)
-      this.props.onActive(active_index);
+  // Call this before setting the active in the state.
+  _notifyCallerOnActive: function (active_index) {
+    if((this.state.active != active_index) && this.props.eventCallback)
+      this.props.eventCallback("active", active_index);
+  },
+
+
+
+  // notify the caller about the dimensions. The caller can use this information if required in any of his other's components
+  // Call this after setting the dims
+  _notifyCallerOnDimensions: function (dims) {
+    if(this.props.eventCallback)
+      this.props.eventCallback('dims', dims || this.state.dims);
   },
 
 
@@ -86,9 +95,9 @@ var MidwayHighlighter = React.createClass({
         active = i;
     }
 
-    this._notifyCaller(active);
+    this._notifyCallerOnActive(active);
     this.setState({ dims: dims, active: active });
-
+    this._notifyCallerOnDimensions(dims);
   },
 
   // Finds the index, which is containing the midline
@@ -119,7 +128,7 @@ var MidwayHighlighter = React.createClass({
   handleScrollEvent: function () {
     var active_index = this._findMidwayIndex();
     if (this.state.active != active_index) {
-      this._notifyCaller(active_index);
+      this._notifyCallerOnActive(active_index);
       this.setState({ active: active_index });
     }
   },
